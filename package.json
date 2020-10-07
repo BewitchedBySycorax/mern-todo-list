@@ -16,6 +16,8 @@
   "author": "Aleksei Voitovskii <al.voitovskii@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "cli-color": "^2.0.0",
     "consolidate": "^0.16.0",
     "cors": "^2.8.5",
@@ -23,6 +25,10 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
-    "handlebars": "^4.7.6"
+    "handlebars": "^4.7.6",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.8",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }
