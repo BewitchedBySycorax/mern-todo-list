@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const database = 'Todo'
+const database = 'tasks'
 const password = '*@Qysyhex!1'
 const uri = `mongodb+srv://BewitchedBySycorax:${password}@cluster0.iqo9r.mongodb.net/${database}?retryWrites=true&w=majority`
 
