@@ -13,6 +13,7 @@
 		"arrow-parens": [2, "as-needed"],
 		"comma-dangle": [2, "never"],
 		"no-confusing-arrow": "off",
+		"no-underscore-dangle": "off",
 		"strict": [2, "global"],
 		"semi": [2, "never"]	
 	}
