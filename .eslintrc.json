@@ -14,7 +14,9 @@
 		"comma-dangle": [2, "never"],
 		"func-names":"off",
 		"no-confusing-arrow": "off",
+		"no-console":"off",
 		"no-underscore-dangle": "off",
+		"padded-blocks":"off",
 		"strict": [2, "global"],
 		"semi": [2, "never"]	
 	}
