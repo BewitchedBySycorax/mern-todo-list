@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+</head>
+
+<body>
+  <header>
+    <span class="title">Task List</span>
+  </header>
+
+  <a href="/logout" class="logOut">Log out</a>
+
+  <form class="classFactory" method="POST" action="/tasks">
+    <fieldset>
+      <legend>Create a new one</legend>
+
+      <label for="taskname">Name of a new entry</label>
+      <input type="text" name="title" id="taskname" /><br />
+
+      <input type="submit" value="Create" />
+    </fieldset>
+  </form>
+
+  <ol>
+    {{#each tasks}}
+      <li>
+        
+        <a href="/tasks/{{this._id}}">
+          {{this.title}}
+        </a>
+        
+        {{#if this.completed}}
+          <b class="completed">[&#10004;]</b>
+
+          <button
+            class="buttonTaskState"
+            form="taskActions"
+            type="submit"
+            value="{{this._id}}"
+            name="id"
+            formaction="/tasks/complete"
+          >
+          Uncompleted
+          </button>
+        {{/if}}
+
+        {{#unless this.completed}}
+          <b class="notCompleted">[&nbsp;&nbsp;&nbsp;]</b>
+
+          <button
+            class="buttonTaskState"
+            form="taskActions"
+            type="submit"
+            value="{{this._id}}"
+            name="id"
+            formaction="/tasks/complete"
+          >
+          Completed
+          </button>
+        {{/unless}}
+        
+        <form id="taskActions" method="POST" action="/tasks/complete"></form>
+
+        <button
+          class="buttonTaskDelete"
+          form="taskActions"
+          type="submit"
+          value="{{this._id}}"
+          name="id"
+          formaction="/tasks/remove"
+        >
+        Delete
+        </button>
+
+      </li>
+    {{/each}}
+  </ol>
+</body>
+</html>
