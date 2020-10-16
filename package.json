@@ -1,28 +1,35 @@
 {
   "name": "mern-todo-list",
   "version": "1.0.0",
-  "description": "Fullstack TODO application",
-  "main": "index.js",
+  "description": "Fullstack ToDo application",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "npx nodemon index.js",
+    "start": "node server.js",
+    "dev": "npx nodemon server.js",
     "lint": "eslint './*.js'",
     "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BewitchedBySycorax/songbird.git"
+    "url": "git+https://github.com/BewitchedBySycorax/mern-todo-list.git"
   },
   "author": "Aleksei Voitovskii <al.voitovskii@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "cli-color": "^2.0.0",
+    "connect-mongo": "^3.2.0",
     "consolidate": "^0.16.0",
-    "cors": "^2.8.5",
-    "eslint": "^7.10.0",
+    "eslint": "^7.11.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
-    "handlebars": "^4.7.6"
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.6",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.9",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }
