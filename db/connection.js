@@ -14,9 +14,11 @@ const connection = async () => {
       useUnifiedTopology: true,
       useFindAndModify: false
     })
-    mongoose.connection.on('error', e => process.stderr.write(e))
+
+    mongoose.connection.on('error', e => console.error(e.message))
+
   } catch (e) {
-    process.stdout.write(e.message)
+    console.error(e.message)
   }
 }
 
