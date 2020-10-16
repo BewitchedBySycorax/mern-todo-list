@@ -6,12 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <script>
+    {{!-- const data = {
+      'name': 'Foo',
+    } --}}
+
+    document.getElementById('show').addEventListener('click', function () {
+      const source = document.getElementById('text-template').innerHTML
+      const template = Handlebars.compile(source)
+      const html = template({{error}})
+      document.getElementById('content').innerHTML = html
+    })
+
+    Handlebars.registerHelper('if_eq', function (a, b, opts) {
+      if (a == b) {
+        return opts.fn(this)
+      } else {
+        return opts.inverse(this)
+      }
+    })
+  </script>
 </head>
 
 <body>
   <form action="/register" method="POST">
     <fieldset>
-      <legend>Registration</legend>  
+
+      {{#if_eq error 'repass'}}
+        <legend style="color: red">Incorrect password repetition!</legend>
+      {{else}}
+        <legend>Registration</legend>
+      {{/if_eq}}
+
       <p class="note">Fields marked with * are required.</p>
       
       <input type="text" name="email" placeholder="e-mail*" /><br />
