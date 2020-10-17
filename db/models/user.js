@@ -16,7 +16,7 @@ const userSchema = new Schema(
   }
 )
 
-// Password encryption just between saving
+// Password encryption just before saving
 userSchema.pre('save', function (next) {
   if (this.isModified('password')) {
     const salt = bcrypt.genSaltSync(SALT_ROUNDS)
