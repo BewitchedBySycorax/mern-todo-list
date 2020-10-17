@@ -2,10 +2,9 @@
   "name": "mern-todo-list",
   "version": "1.0.0",
   "description": "Fullstack ToDo application",
-  "main": "server-jwt-rest.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server-jwt-rest.js",
-    "start-no-api": "node server-passport-local.js",
+    "start": "node server.js",
     "dev": "npx nodemon server-jwt-rest.js",
     "lint": "eslint './*.js'",
     "lint:fix": "npm run lint -- --fix"
