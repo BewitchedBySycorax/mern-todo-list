@@ -10,7 +10,7 @@ module.exports = app => {
       const user = await User.findOne({ email: username })
 
       if (!user || !user.validatePassword(password)) {
-        return res.status(401).send('User unregistred or incorrect password! Please, check it out.')
+        return res.status(401).json({ message: 'User unregistred or incorrect password! Please, check it out.' })
       }
 
       const plainUser = JSON.parse(JSON.stringify(user))
