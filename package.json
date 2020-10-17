@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "npx nodemon server-jwt-rest.js",
+    "dev": "npx nodemon server.js",
     "lint": "eslint './*.js'",
     "lint:fix": "npm run lint -- --fix"
   },
