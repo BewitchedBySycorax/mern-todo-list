@@ -2,15 +2,15 @@ const schema = require('./schema')
 
 const registerValidator = async (req, res, next) => {
   try {
-    const { email, password } = req.body
+    const { email, password, repassword } = req.body
 
-    await schema.validateAsync({ email, password }, { abortEarly: false })
+    await schema.validateAsync({ email, password, repassword }, { abortEarly: false })
 
   } catch (e) {
     res.status(400).json({ error: e })
   }
 
-  // next() // ! Cannot set headers after they are sent to the client
+  next()
 }
 
 const authValidator = async (req, res, next) => {
@@ -23,7 +23,7 @@ const authValidator = async (req, res, next) => {
     res.status(400).json({ error: e })
   }
 
-  // next() // ! Cannot set headers after they are sent to the client
+  next()
 }
 
 module.exports = {
