@@ -9,11 +9,14 @@ const schema = Joi.object({
     .required(),
 
   password: Joi.string()
-    // Minimum 8 characters, at least 1 letter, 1 number and 1 special character
-    .pattern(new RegExp('^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$')),
+    .min(3)
+    .max(8)
+    .required(),
 
-  repeat_password: Joi.ref('password')
+  repassword: Joi.any()
+    .valid(Joi.ref('password'))
+    .required()
 })
-  .with('password', 'repeat_password')
+  .with('password', 'repassword')
 
 module.exports = schema
