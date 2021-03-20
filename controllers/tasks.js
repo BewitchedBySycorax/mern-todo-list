@@ -21,6 +21,7 @@ module.exports = app => {
     try {
       const { _id } = req.user
 
+      // Plain JavaScript object instead of Mongoose's one due to the .lean() usage
       const tasks = await Task.find({ user: _id }).lean()
 
       res.render('../views/tasks', { tasks, title: 'ToDo List' })
