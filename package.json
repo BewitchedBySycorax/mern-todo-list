@@ -22,15 +22,16 @@
     "connect-mongo": "^3.2.0",
     "consolidate": "^0.16.0",
     "cors": "^2.8.5",
-    "eslint": "^7.11.0",
+    "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "handlebars": "^4.7.6",
+    "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.2",
-    "mongoose": "^5.10.9",
+    "mongoose": "^5.10.11",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   }
