@@ -1,11 +1,17 @@
 # Apple Desktop Services Store
 .DS_Store
 
+# Backup files
+*_backup*
+
+# Build
+public/
+
 # Dependencies
 node_modules/
 
+# Packages lock file
+package-lock.json
+
 # Temp working directory
 temp/
-
-# Backup files
-*_backup*
