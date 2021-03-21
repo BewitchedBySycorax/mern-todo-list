@@ -1,0 +1,14 @@
+# Apple Desktop Services Store
+.DS_Store 
+
+# Application build
+public/
+
+# Backup files
+*_backup*
+
+# Dependencies
+node_modules/
+
+# Temp working directory
+temp/
