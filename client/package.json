@@ -15,6 +15,7 @@
   "author": "Aleksei Voitovskii <al.voitovskii@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "material-ui": "^0.20.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
