@@ -18,8 +18,8 @@ passport.use(
 
       done(null, plainUser) // req.user
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 )
@@ -39,8 +39,8 @@ passport.deserializeUser(async (id, done) => {
 
     done(null, plainUser) // req.user
 
-  } catch (e) {
-    console.error(e.message)
+  } catch (err) {
+    console.error(err.message)
   }
 })
 
