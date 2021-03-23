@@ -5,16 +5,22 @@ module.exports = app => {
   // Create new task
   app.post('/api/tasks', async (req, res) => {
     try {
+      const N = 10
       const { _id } = req.user
 
-      const task = new Task({ ...req.body, user: _id }) // req.body[user] = _id
+      if (req.body.title.length <= 10) {
+        res.status(400).json({ message: `Task title must be less than or equal to ${N} characters.` })
 
-      await task.save()
+      } else {
+        const task = new Task({ ...req.body, user: _id }) // req.body[user] = _id
 
-      res.status(201).json(task)
+        await task.save()
 
-    } catch (e) {
-      console.error(e.message)
+        res.status(201).json(task)
+      }
+    } catch (err) {
+      console.error(err.message)
+      res.status(500).send(err.message)
     }
   })
 
@@ -28,8 +34,9 @@ module.exports = app => {
 
       res.status(200).json(tasks)
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
+      res.status(500).send(err.message)
     }
   })
 
@@ -42,8 +49,9 @@ module.exports = app => {
 
       res.status(200).json(task)
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
+      res.status(500).send(err.message)
     }
   })
 
@@ -56,8 +64,9 @@ module.exports = app => {
 
       res.status(200).json(task)
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
+      res.status(500).send(err.message)
     }
   })
 
@@ -71,8 +80,9 @@ module.exports = app => {
 
       res.status(200).json(modifiedTask)
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
+      res.status(500).send(err.message)
     }
   })
 
@@ -85,8 +95,9 @@ module.exports = app => {
 
       res.status(204).send()
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
+      res.status(500).send(err.message)
     }
   })
 }
