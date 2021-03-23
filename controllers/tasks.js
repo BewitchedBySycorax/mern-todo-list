@@ -12,8 +12,8 @@ module.exports = app => {
 
       res.redirect('/')
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 
@@ -25,8 +25,8 @@ module.exports = app => {
 
       res.render('../views/tasks', { tasks, title: 'ToDo List' })
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 
@@ -40,8 +40,8 @@ module.exports = app => {
 
       res.redirect('/')
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 
@@ -53,8 +53,8 @@ module.exports = app => {
 
       res.render('../views/task', task)
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 
@@ -66,8 +66,8 @@ module.exports = app => {
 
       res.redirect('/tasks')
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 
@@ -79,8 +79,8 @@ module.exports = app => {
 
       res.redirect('/')
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 
