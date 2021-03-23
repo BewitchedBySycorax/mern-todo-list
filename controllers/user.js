@@ -23,8 +23,8 @@ module.exports = app => {
       } else {
         res.redirect('/register?error=repass')
       }
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 
