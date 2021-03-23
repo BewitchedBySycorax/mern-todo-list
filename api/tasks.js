@@ -55,6 +55,30 @@ module.exports = app => {
     }
   })
 
+  // Update custom task (set/unset completion status)
+  app.patch('/api/change-task-completion-status/:id', async (req, res) => {
+    try {
+      const { id } = req.params
+
+      const task = await Task.findById(id).lean()
+
+      if (!task) {
+        res.status(404).send(`Task with specified id ${id} not found`)
+      }
+
+      const { completed } = task
+
+      await Task.findOneAndUpdate({ _id: id }, { ...task, completed: !completed })
+      const modifiedTask = await Task.findById(id).lean()
+
+      res.status(200).json(modifiedTask)
+
+    } catch (err) {
+      console.error(err.message)
+      res.status(500).send(err.message)
+    }
+  })
+
   // Update custom task (completely)
   app.put('/api/tasks/:id', async (req, res) => {
     try {
