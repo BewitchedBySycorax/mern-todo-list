@@ -21,8 +21,8 @@ module.exports = app => {
       } else {
         res.status(400).json({ message: 'User exists!' })
       }
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 }

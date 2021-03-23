@@ -18,8 +18,8 @@ module.exports = app => {
 
       res.status(200).json({ ...plainUser, token: jwt.sign(plainUser, '9UwBWnYD') })
 
-    } catch (e) {
-      console.error(e.message)
+    } catch (err) {
+      console.error(err.message)
     }
   })
 }
