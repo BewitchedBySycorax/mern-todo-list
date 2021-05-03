@@ -71,7 +71,7 @@ module.exports = app => {
     }
   })
 
-  router.post('/remove', async (req, res) => {
+  router.delete('/remove', async (req, res) => {
     try {
       const { id } = req.body
 
