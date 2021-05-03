@@ -25,7 +25,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ESLintPlugin(),
+    new ESLintPlugin(),       // ?
     new HtmlWebpackPlugin({
       title: 'ToDo application',
       template: path.resolve(__dirname, './src/template.html')
