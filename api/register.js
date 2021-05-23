@@ -1,7 +1,7 @@
 const User = require('../db/models/user')
 
 module.exports = app => {
-  app.post('/api/register', async (req, res) => {
+  app.post('/register', async (req, res) => {
     try {
       const { repassword, ...restBody } = req.body
       const { email, password } = restBody
@@ -23,7 +23,7 @@ module.exports = app => {
       }
     } catch (err) {
       console.error(err.message)
-      res.status(500).send(err.message)
+      res.status(500).json({ message: err.message })
     }
   })
 }
