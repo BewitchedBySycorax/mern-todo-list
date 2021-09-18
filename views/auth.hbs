@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+</head>
+
+<body class="body_hide">
+  <form action="/auth" method="POST">
+    <fieldset>
+
+      {{#unless error}}
+        <legend>Login</legend>
+      {{/unless}}
+
+      {{#if error}}
+        <legend style="color: red">Invalid login or password!</legend>
+      {{/if}}
+      
+      <input type="text" name="email" placeholder="e-mail" /><br />
+      <input type="password" name="password" placeholder="Password" autocomplete="off" /><br />
+      <input type="submit" value="Sign In" />
+
+    </fieldset>
+  </form>
+
+  <h3>Not yet registered? Please, <a href="/register">sign up</a></h3>
+
+  <script>
+    setTimeout(() => { document.body.classList.add('body_visible') }, 250)
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../db/models/user')
 
 module.exports = app => {
-  app.post('/auth', async (req, res) => {
+  app.post('/api/auth', async (req, res) => {
     try {
       const { username, password } = req.body
 
@@ -20,7 +20,7 @@ module.exports = app => {
 
     } catch (err) {
       console.error(err.message)
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     }
   })
 }

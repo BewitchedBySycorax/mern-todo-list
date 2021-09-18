@@ -1,17 +1,17 @@
 {
-  "name": "to-do-list-application",
+  "name": "mern-todo-list-server",
   "version": "1.0.0",
-  "description": "To Do List Application",
-  "main": "index.js",
+  "description": "Fullstack ToDo application backend",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "npx nodemon index.js",
-    "lint": "eslint '**/*.js'",
+    "start": "node server.js",
+    "dev": "npx nodemon server.js",
+    "lint": "eslint './*.js'",
     "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BewitchedBySycorax/to-do-list-application.git"
+    "url": "git+https://github.com/BewitchedBySycorax/mern-todo-list.git"
   },
   "author": "Aleksei Voitovskii <al.voitovskii@gmail.com>",
   "license": "ISC",
@@ -25,8 +25,12 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.6",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.2",
-    "mongoose": "^5.10.9"
+    "mongoose": "^5.10.9",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }

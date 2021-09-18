@@ -15,10 +15,10 @@ const connection = async () => {
       useFindAndModify: false
     })
 
-    mongoose.connection.on('error', err => console.error(err.message))
+    mongoose.connection.on('error', e => console.error(e.message))
 
-  } catch (err) {
-    console.error(err.message)
+  } catch (e) {
+    console.error(e.message)
   }
 }
 

@@ -3,7 +3,7 @@ const Task = require('../db/models/task')
 
 module.exports = app => {
   // Create new task
-  app.post('/tasks', async (req, res) => {
+  app.post('/api/tasks', async (req, res) => {
     try {
       const N = 10
       const { _id } = req.user
@@ -20,12 +20,12 @@ module.exports = app => {
       }
     } catch (err) {
       console.error(err.message)
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     }
   })
 
   // Read (show) all tasks
-  app.get('/tasks', async (req, res) => {
+  app.get('/api/tasks', async (req, res) => {
     try {
       const { _id } = req.user
       const { page = 1, limit = 5 } = req.query
@@ -36,12 +36,12 @@ module.exports = app => {
 
     } catch (err) {
       console.error(err.message)
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     }
   })
 
   // Read custom task
-  app.get('/tasks/:id', async (req, res) => {
+  app.get('/api/tasks/:id', async (req, res) => {
     try {
       const { id } = req.params
 
@@ -51,12 +51,12 @@ module.exports = app => {
 
     } catch (err) {
       console.error(err.message)
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     }
   })
 
   // Update custom task (set/unset completion status)
-  app.patch('/change-task-completion-status/:id', async (req, res) => {
+  app.patch('/api/change-task-completion-status/:id', async (req, res) => {
     try {
       const { id } = req.params
 
@@ -75,12 +75,12 @@ module.exports = app => {
 
     } catch (err) {
       console.error(err.message)
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     }
   })
 
   // Update custom task (completely)
-  app.put('/tasks/:id', async (req, res) => {
+  app.put('/api/tasks/:id', async (req, res) => {
     try {
       const { id } = req.params
 
@@ -90,12 +90,12 @@ module.exports = app => {
 
     } catch (err) {
       console.error(err.message)
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     }
   })
 
   // Update custom task (fine)
-  app.patch('/tasks/:id', async (req, res) => {
+  app.patch('/api/tasks/:id', async (req, res) => {
     try {
       const { id } = req.params
 
@@ -106,12 +106,12 @@ module.exports = app => {
 
     } catch (err) {
       console.error(err.message)
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     }
   })
 
   // Delete custom task
-  app.delete('/tasks/:id', async (req, res) => {
+  app.delete('/api/tasks/:id', async (req, res) => {
     try {
       const { id } = req.params
 
@@ -121,7 +121,7 @@ module.exports = app => {
 
     } catch (err) {
       console.error(err.message)
-      res.status(500).json({ message: err.message })
+      res.status(500).send(err.message)
     }
   })
 }
