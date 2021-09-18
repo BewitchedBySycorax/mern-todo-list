@@ -31,7 +31,7 @@ app.engine('hbs', consolidate.handlebars)
 app.set('view engine', 'hbs')
 
 // Middlewares
-app.use(bodyParser.urlencoded({ extended: true })) // if false - either string or array in req.body
+app.use(express.urlencoded({ extended: true })) // if false - either string or array in req.body
 app.use(express.json())
 app.use(cors())
 app.use(session({
