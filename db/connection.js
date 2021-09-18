@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const database = 'tasks'
-const password = '*@Qysyhex!1'
+const password = '9u6orxE8BT4LGZgf'
 const uri = `mongodb+srv://BewitchedBySycorax:${password}@cluster0.iqo9r.mongodb.net/${database}?retryWrites=true&w=majority`
 
 // It lets mongoose call the createIndex method on the mongodb native driver
