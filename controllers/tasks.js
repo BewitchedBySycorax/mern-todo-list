@@ -10,7 +10,9 @@ module.exports = app => {
 
       await task.save()
 
-      res.redirect('/')
+      res.send('1234')
+
+      // res.redirect('/')
 
     } catch (err) {
       console.error(err.message)
@@ -19,11 +21,13 @@ module.exports = app => {
 
   router.get('/', async (req, res) => {
     try {
-      const { _id } = req.user
 
-      const tasks = await Task.find({ user: _id }).lean()
+      res.send('1234')
+      // const { _id } = req.user
 
-      res.render('../views/tasks', { tasks, title: 'ToDo List' })
+      // const tasks = await Task.find({ user: _id }).lean()
+
+      // res.render('../views/tasks', { tasks, title: 'ToDo List' })
 
     } catch (err) {
       console.error(err.message)

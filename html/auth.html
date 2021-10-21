@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo application</title>
+</head>
+<body> 
+  <input id="username" type="text" placeholder="username"/><br/>
+  <input id="password" type="password" placeholder="password"/><br/>
+  <input id="send" type="submit"/>
+
+  <script>
+    const $username = document.querySelector('#username')
+    const $password = document.querySelector('#password')
+    const $send = document.querySelector('#send')
+
+    $send.addEventListener('click', e => {
+      localStorage.removeItem('token');
+
+      fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',         
+        },
+        body: JSON.stringify({
+          username: $username.value,
+          password: $password.value
+        }),
+      })
+        .then((response) => {
+          if (response.status !== 200) {
+            /* TODO: Покрасить форму в красный */
+
+            return { token: null };
+          }
+
+          return response.json();
+        })
+        .then((response) => {
+          if (response.token) {
+            const { token, ...user } = response;
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+
+            window.location = '/';
+          }
+        });
+
+      e.preventDefault();
+    })
+  </script>
+</body>
+</html>

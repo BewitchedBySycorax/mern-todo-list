@@ -1,13 +1,14 @@
 /* eslint-disable global-require */
 const { bold } = require('cli-color')
+const path = require('path')
 const express = require('express')
 const cors = require('cors')
 const session = require('express-session')
-const jwt = require('jsonwebtoken')
 const consolidate = require('consolidate')
 const hbs = require('handlebars')
 const mongoose = require('mongoose')
 const MongoStore = require('connect-mongo')(session)
+const checkAuthentication = require('./middlewares/checkAuthentication')
 
 const passport = require('./auth/auth')
 
@@ -43,34 +44,35 @@ app.use(session({
 app.use(passport.initialize)
 app.use(passport.session)
 app.use('/tasks', passport.mustBeAuthenticated)
-
-// Custom middleware
-const checkAuthentication = (req, res, next) => {
-  const { authorization } = req.headers
-
-  if (authorization) {
-    // eslint-disable-next-line no-unused-vars
-    const [_type, token] = authorization.split(' ') // authorization: Bearer <token>
-
-    jwt.verify(token, '9UwBWnYD', (err, decoded) => {
-      if (err) return res.status(403).json({ message: 'Some error occurred! Please check authorization token and try again.' })
-
-      req.user = decoded // decoded === token payload
-
-      next()
-    })
-
-  } else {
-    res.status(403).json({ message: 'Some error occurred! Please check authorization token and try again.' })
-  }
-}
-
 app.use('/api/tasks', checkAuthentication)
 
+app.get('/', (_req, res) => {
+  res.sendFile(path.resolve(__dirname, 'html', 'index.html'))
+})
+
+app.get('/auth', (_req, res) => {
+  res.sendFile(path.resolve(__dirname, 'html', 'auth.html'))
+})
+
+// FIXME: not working — look at user.js controller
 require('./controllers/user')(app)
 require('./controllers/tasks')(app)
 require('./index')(app) // API
 
-app.get('/', (req, res) => req.user ? res.redirect('/tasks') : res.redirect('/auth'))
+// switch (process.env.CLIENT) {
+//   case 'native':
+//     app.get('/', (_req, res) => {
+//       res.sendFile(path.resolve(__dirname, 'html', 'index.html'))
+//     })
+//     // FIXME: not working — look at user.js controller
+//     app.get('/auth', (_req, res) => {
+//       res.sendFile(path.resolve(__dirname, 'html', 'auth.html'))
+//     })
+//     break
+//   case 'react':
+//     break
+//   default:
+//     // app.get('/', (req, res) => req.user ? res.redirect('/tasks') : res.redirect('/auth'))
+// }
 
 app.listen(PORT, () => console.log(bold.underline.xterm(226)(`Server has been started on localhost: ${PORT}\n`)))
