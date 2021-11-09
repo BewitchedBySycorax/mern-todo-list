@@ -46,33 +46,24 @@ app.use(passport.session)
 app.use('/tasks', passport.mustBeAuthenticated)
 app.use('/api/tasks', checkAuthentication)
 
-app.get('/', (_req, res) => {
-  res.sendFile(path.resolve(__dirname, 'html', 'index.html'))
-})
+switch (process.env.CLIENT) {
+  case 'native':
+    app.get('/', (_req, res) => {
+      res.sendFile(path.resolve(__dirname, 'html', 'index.html'))
+    })
 
-app.get('/auth', (_req, res) => {
-  res.sendFile(path.resolve(__dirname, 'html', 'auth.html'))
-})
+    app.get('/auth', (_req, res) => {
+      res.sendFile(path.resolve(__dirname, 'html', 'auth.html'))
+    })
+    break
+  case 'react':
+    break
+  default:
+    app.get('/', (req, res) => req.user ? res.redirect('/tasks') : res.redirect('/auth'))
+}
 
-// FIXME: not working — look at user.js controller
 require('./controllers/user')(app)
 require('./controllers/tasks')(app)
 require('./index')(app) // API
-
-// switch (process.env.CLIENT) {
-//   case 'native':
-//     app.get('/', (_req, res) => {
-//       res.sendFile(path.resolve(__dirname, 'html', 'index.html'))
-//     })
-//     // FIXME: not working — look at user.js controller
-//     app.get('/auth', (_req, res) => {
-//       res.sendFile(path.resolve(__dirname, 'html', 'auth.html'))
-//     })
-//     break
-//   case 'react':
-//     break
-//   default:
-//     // app.get('/', (req, res) => req.user ? res.redirect('/tasks') : res.redirect('/auth'))
-// }
 
 app.listen(PORT, () => console.log(bold.underline.xterm(226)(`Server has been started on localhost: ${PORT}\n`)))
