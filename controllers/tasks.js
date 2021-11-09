@@ -19,6 +19,7 @@ module.exports = app => {
 
   router.get('/', async (req, res) => {
     try {
+
       const { _id } = req.user
 
       const tasks = await Task.find({ user: _id }).lean()
